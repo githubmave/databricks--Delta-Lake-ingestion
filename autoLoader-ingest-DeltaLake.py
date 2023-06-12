@@ -58,3 +58,26 @@ display(df4)
 
 # Transformation of DataFrame using Spark, the below is inner join by DEFAULT
 joined_df=df1.join(df2,how="inner",on="id")
+
+union_df=df1.union(df2)
+
+# Filter Rows for DataFrame
+filtered_df=df1.where("id > 1")
+filtered_df=df1.filter("id > 1")
+
+
+# Select columns from a DataFrame
+select_df=df1.select( "name")
+display(select_df)
+
+
+subset_df = df1.filter("id > 1").select("name")
+display(subset_df)
+
+
+# Save a DataFrame to table
+df1.write.saveAsTable("<table-name")
+df1.write.format("json").save("/tmp/json_data")
+
+
+
