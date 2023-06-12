@@ -22,3 +22,11 @@ dbtils.fs.rm(checkpoint_path, True)
     .toTable(table_name)
  
  )
+
+
+# To display the table
+display(df)
+
+#Create a new visualization
+sparkDF=spark.read.csv("/databricks-datasets/bikeSharing/data-001/day.csv",header="true", inferSchema="true")
+display(sparkDF)
