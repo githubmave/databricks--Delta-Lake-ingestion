@@ -30,3 +30,31 @@ display(df)
 #Create a new visualization
 sparkDF=spark.read.csv("/databricks-datasets/bikeSharing/data-001/day.csv",header="true", inferSchema="true")
 display(sparkDF)
+
+
+# Create DataFrame with PySpark
+import pandas as pd
+data=[ [1,"Elia"],[2,"Teo"],[3,"Fang"]]
+
+pdf=pd.DataFrame(data,columns=["id","name"])
+
+
+df1=spark.createDataFrame(pdf)
+df2=spark.createDataFrame(data,schema="id LONG,name STRING")
+display(df1)
+# Read a table into a DataFrame
+df3=spark.read.table=("<catalog-name>.<schema_name>.<table-name>")
+display(df3)
+
+# Load data into dataFrame from file
+
+df = (spark.read
+  .format("csv")
+  .option("header", "true")
+  .option("inferSchema", "true")
+  .load("/databricks-datasets/samples/population-vs-price/data_geo.csv")
+)
+display(df4)
+
+# Transformation of DataFrame using Spark, the below is inner join by DEFAULT
+joined_df=df1.join(df2,how="inner",on="id")
